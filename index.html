@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Casamento Danilo & Marina — 28/03/2026</title>
+  <meta name="description" content="Convite de casamento de Danilo & Marina — 28 de Março de 2026, 15:00 — Fazenda Pontal, Boipeba, Bahia"/>
+  <style>
+    :root{
+      --bg: #faf7f2;
+      --fg: #2f2a26;
+      --accent: #7b9b57; /* verde folha */
+      --accent-2: #c4a484; /* dourado suave */
+      --card: #ffffff;
+      --muted: #6a5b4b;
+    }
+    *{box-sizing: border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+      color:var(--fg);
+      background:linear-gradient(180deg,var(--bg),#fff);
+    }
+    a{color:inherit}
+    header.hero{
+      padding:64px 20px 32px;
+      text-align:center;
+      background: radial-gradient(1200px 500px at 50% -200px, rgba(123,155,87,.12), transparent),
+                  radial-gradient(900px 400px at 0% -100px, rgba(196,164,132,.15), transparent);
+    }
+    .stamp{
+      display:inline-flex;align-items:center;justify-content:center;
+      width:120px;height:120px;border:2px dashed var(--accent-2);
+      border-radius:50%;color:var(--accent);
+      font-size:38px;user-select:none;filter: drop-shadow(0 2px 0 rgba(0,0,0,.04));
+    }
+    h1{
+      margin:18px 0 6px;font-weight:400;letter-spacing:.06em;
+    }
+    .subtitle{color:var(--muted);font-style:italic}
+    .date{font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;letter-spacing:.06em;color:#5c3d2e}
+    .divider{width:88px;height:2px;background:var(--accent-2);margin:20px auto 10px;border-radius:1px}
+
+    .grid{display:grid;gap:20px;margin:28px auto;max-width:1100px;padding:0 20px}
+    .card{background:var(--card);border:1px solid rgba(0,0,0,.06);border-radius:20px;box-shadow:0 6px 16px rgba(0,0,0,.05)}
+    .section{padding:24px}
+
+    .countdown{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+    .timebox{min-width:90px;padding:14px 10px;border-radius:16px;background:#fff;border:1px solid rgba(0,0,0,.06);text-align:center}
+    .timebox .num{font-size:28px;font-weight:500}
+    .timebox .lbl{font-size:12px;color:#7a6b5d;letter-spacing:.06em;text-transform:uppercase}
+
+    .map-wrap{position:relative;padding-top:56%;border-radius:18px;overflow:hidden;border:1px solid rgba(0,0,0,.08)}
+    .map-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+    .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    @media(min-width:700px){.gallery{grid-template-columns:repeat(3,1fr)}}
+    .gallery figure{margin:0;position:relative;border-radius:14px;overflow:hidden;border:1px solid rgba(0,0,0,.06);background:#f1ede7}
+    .gallery img{width:100%;height:220px;object-fit:cover;display:block;transition:transform .3s ease}
+    .gallery figure:hover img{transform:scale(1.03)}
+    .gallery figcaption{position:absolute;left:0;bottom:0;right:0;padding:6px 10px;background:linear-gradient(transparent, rgba(0,0,0,.45));color:#fff;font-size:12px}
+
+    footer{padding:36px 20px 56px;text-align:center;color:#776b5d}
+    .rsvp a{display:inline-block;margin-top:10px;padding:10px 16px;border-radius:999px;border:1px solid var(--accent-2);text-decoration:none}
+
+    /* Lightbox */
+    dialog{border:none;border-radius:16px;padding:0;max-width:min(92vw,1100px)}
+    dialog::backdrop{background:rgba(0,0,0,.6)}
+    .lightbox img{display:block;width:100%;height:auto}
+    .lightbox .close{position:absolute;top:8px;right:8px;background:#fff;border:none;border-radius:999px;padding:8px 11px;cursor:pointer}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="stamp" aria-hidden="true">🌿</div>
+    <h1>Danilo & Marina</h1>
+    <div class="subtitle">Estão se casando!</div>
+    <div class="divider"></div>
+    <p class="date">28 de Março de 2026, 15:00</p>
+    <p style="margin:0;color:#7b4d2c">Fazenda Pontal — Boipeba, Bahia</p>
+  </header>
+
+  <main class="grid">
+    <!-- Contador Regressivo -->
+    <section class="card section" aria-labelledby="ttl-count">
+      <h2 id="ttl-count" style="margin:0 0 14px 0;font-weight:500">Faltam</h2>
+      <div id="countdown" class="countdown" aria-live="polite">
+        <div class="timebox"><div class="num" id="dd">—</div><div class="lbl">dias</div></div>
+        <div class="timebox"><div class="num" id="hh">—</div><div class="lbl">horas</div></div>
+        <div class="timebox"><div class="num" id="mm">—</div><div class="lbl">minutos</div></div>
+        <div class="timebox"><div class="num" id="ss">—</div><div class="lbl">segundos</div></div>
+      </div>
+      <p style="text-align:center;margin-top:12px;color:#7a6b5d;font-size:14px">Data-alvo: 28/03/2026 (ajuste o horário no código se desejar)</p>
+    </section>
+
+    <!-- Mapa Interativo Google Maps -->
+    <section class="card section" aria-labelledby="ttl-map">
+      <h2 id="ttl-map" style="margin:0 0 14px 0;font-weight:500">Como chegar — Fazenda Pontal</h2>
+      <div class="map-wrap" role="application" aria-label="Mapa da Fazenda Pontal em Boipeba">
+        <!-- Se tiver o link exato do local no Google Maps, substitua o q= pela URL de Place ID; este iframe funciona sem API Key -->
+        <iframe loading="lazy" allowfullscreen
+          src="https://www.google.com/maps?q=Fazenda%20Pontal%20Boipeba%20Bahia&output=embed"></iframe>
+      </div>
+      <p style="margin-top:10px;text-align:center"><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Fazenda%20Pontal%20Boipeba%20Bahia">Abrir no Google Maps</a></p>
+    </section>
+
+    <!-- Galeria de Fotos -->
+    <section class="card section" aria-labelledby="ttl-gallery">
+      <h2 id="ttl-gallery" style="margin:0 0 14px 0;font-weight:500">Nossa Galeria</h2>
+      <div class="gallery" id="gallery">
+        <!-- Substitua os src abaixo pelas suas fotos (ex.: ./fotos/01.jpg, ./fotos/02.jpg ...) -->
+        <figure>
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop" alt="Praia ensolarada em Boipeba" />
+          <figcaption>Boipeba</figcaption>
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop" alt="Folhagens tropicais" />
+          <figcaption>Tropical</figcaption>
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1520848315518-b991dd16a970?q=80&w=1200&auto=format&fit=crop" alt="Pôr do sol" />
+          <figcaption>Pôr do sol</figcaption>
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1502303756787-90e86ad7c44d?q=80&w=1200&auto=format&fit=crop" alt="Detalhe de folhas de coqueiro" />
+          <figcaption>Coqueiros</figcaption>
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=1200&auto=format&fit=crop" alt="Mar calmo" />
+          <figcaption>Mar</figcaption>
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1507120878965-54b2d3939100?q=80&w=1200&auto=format&fit=crop" alt="Areia branca" />
+          <figcaption>Areia</figcaption>
+        </figure>
+      </div>
+      <p style="margin-top:10px;color:#7a6b5d;font-size:14px">Dica: substitua os links pelas suas fotos ou arraste e solte arquivos sobre a página (ver abaixo).</p>
+    </section>
+
+    <!-- RSVP / Contato -->
+    <section class="card section rsvp" aria-labelledby="ttl-rsvp">
+      <h2 id="ttl-rsvp" style="margin:0 0 14px 0;font-weight:500">Confirmação de Presença (RSVP)</h2>
+      <p>Confirme sua presença até <strong>28 de Dezembro de 2025</strong>.</p>
+      <p><a href="mailto:danilomarina@casamento.com?subject=RSVP%20Casamento%20Danilo%20%26%20Marina">Enviar e‑mail</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Com carinho, Danilo & Marina • 28/03/2026 — Boipeba, Bahia</p>
+  </footer>
+
+  <dialog id="lightbox" class="lightbox">
+    <button class="close" aria-label="Fechar" onclick="document.getElementById('lightbox').close()">✕</button>
+    <img id="lightbox-img" alt="Foto em destaque" />
+  </dialog>
+
+  <script>
+    // ===== Contador Regressivo =====
+    (function(){
+      // Ajuste o horário se quiser (00:00 no fuso de São Paulo):
+      const target = new Date('2026-03-28T15:00:00-03:00').getTime();
+      const elD = document.getElementById('dd');
+      const elH = document.getElementById('hh');
+      const elM = document.getElementById('mm');
+      const elS = document.getElementById('ss');
+      function tick(){
+        const now = Date.now();
+        let diff = Math.max(0, target - now);
+        const d = Math.floor(diff / (1000*60*60*24));
+        diff -= d*(1000*60*60*24);
+        const h = Math.floor(diff / (1000*60*60));
+        diff -= h*(1000*60*60);
+        const m = Math.floor(diff / (1000*60));
+        diff -= m*(1000*60);
+        const s = Math.floor(diff / 1000);
+        elD.textContent = String(d);
+        elH.textContent = String(h).padStart(2,'0');
+        elM.textContent = String(m).padStart(2,'0');
+        elS.textContent = String(s).padStart(2,'0');
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
+
+    // ===== Lightbox simples na galeria =====
+    (function(){
+      const dlg = document.getElementById('lightbox');
+      const big = document.getElementById('lightbox-img');
+      document.getElementById('gallery').addEventListener('click', e => {
+        const img = e.target.closest('img');
+        if(!img) return;
+        big.src = img.src;
+        big.alt = img.alt || 'Foto';
+        dlg.showModal();
+      });
+    })();
+
+    // ===== Arraste e solte fotos para a galeria (opcional) =====
+    ;(function(){
+      const gal = document.getElementById('gallery');
+      ;['dragenter','dragover'].forEach(evt=>{
+        gal.addEventListener(evt, e=>{ e.preventDefault(); gal.style.outline='2px dashed var(--accent-2)';});
+      });
+      ;['dragleave','drop'].forEach(evt=>{
+        gal.addEventListener(evt, e=>{ e.preventDefault(); gal.style.outline='none';});
+      });
+      gal.addEventListener('drop', async (e)=>{
+        const files = [...(e.dataTransfer?.files||[])].filter(f=>/^image\//.test(f.type));
+        for(const f of files){
+          const url = URL.createObjectURL(f);
+          const fig = document.createElement('figure');
+          const img = document.createElement('img');
+          img.src = url; img.alt = f.name; img.loading = 'lazy';
+          const cap = document.createElement('figcaption');
+          cap.textContent = f.name;
+          fig.appendChild(img); fig.appendChild(cap);
+          gal.prepend(fig);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
