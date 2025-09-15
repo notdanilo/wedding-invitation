@@ -136,6 +136,19 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      position: relative;
+      padding-right: 20px;
+    }
+    .transport-option summary::after {
+      content: "▼";
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: transform 0.3s ease;
+    }
+    .transport-option[open] summary::after {
+      transform: translateY(-50%) rotate(180deg);
     }
     .transport-option .icon {
       font-size: 32px;
@@ -159,9 +172,51 @@
       color: var(--accent);
       text-decoration: underline;
     }
-
-    footer{padding:36px 20px 56px;text-align:center;color:#776b5d}
-    .rsvp a{display:inline-block;margin-top:10px;padding:10px 16px;border-radius:999px;border:1px solid var(--accent-2);text-decoration:none}
+    .transport-option ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 8px;
+    }
+    .transport-option li {
+      margin-bottom: 8px;
+      display: flex;
+      align-items: baseline;
+    }
+    .transport-option li::before {
+      content: "📍";
+      margin-right: 8px;
+    }
+    .transport-option .title-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .transport-option .title-row h3 {
+      margin: 0;
+    }
+    .transport-option .recommended {
+      background-color: var(--accent);
+      color: white;
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-top: 0;
+    }
+    .duration {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 5px;
+    }
+    .cost {
+      font-size: 12px;
+      color: var(--accent);
+      margin-top: 5px;
+    }
+    .alternative {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 5px;
+    }
   </style>
 </head>
 <body>
@@ -243,7 +298,7 @@
     </section>
 
     <section class="card section" aria-labelledby="ttl-map">
-      <h2 id="ttl-map" style="margin:0 0 14px 0;font-weight:500">Como chegar — Fazenda Pontal</h2>
+      <h2 id="ttl-map" style="margin:0 0 14px 0;font-weight:500">Local do Evento — Fazenda Pontal</h2>
 
       <!-- Mapa Interativo Google Maps -->
       <div class="map-wrap" role="application" aria-label="Mapa da Fazenda Pontal em Boipeba">
@@ -253,47 +308,67 @@
       </div>
       <p style="margin-top:10px;text-align:center"><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Fazenda%20Pontal%20Boipeba%20Bahia">Abrir no Google Maps</a></p>
 
-      <h3>De Boipeba para a Fazenda Pontal no dia do evento</h3>
-      <p>Uma embarcação estará disponível durante o dia do evento para fazer a travessia do rio partindo de Boipeba para a Fazenda Pontal.
-        <br/><br/>
-        O horário e local de partida serão informados posteriormente.</p>
-
-      <h3>Como chegar a Boipeba a partir de Salvador</h3>
-      <p>Existe uma linha direta de Salvador para Boipeba. Esse trajeto é feito por lancha através de uma agência e o embarque acontece no Terminal Turístico Náutico da Bahia.</p>
+      <h3>📍 Salvador → Boipeba</h3>
       <div class="transport-grid">
         <details class="transport-option">
           <summary>
-            <div class="icon">⛴️</div>
-            <h3>De Catamarã</h3>
-          </summary>
-          <p>No terminal marítimo em frente ao Mercado Modelo partem embarcações para Morro de São Paulo que levam cerca de duas horas. Do Morro pode pegar um jipe até Boipeba. Recomendamos organizar isso com antecedência. <a href="https://www.morrodesaopaulocatamara.com/" target="_blank">morrodesaopaulocatamara.com</a></p>
-        </details>
-        <details class="transport-option">
-          <summary>
             <div class="icon">🚤</div>
-            <h3>Lancha Direta</h3>
+            <div class="title-row">
+              <h3>Lancha Direta</h3>
+              <span class="recommended">Recomendado</span>
+            </div>
+            <br/>
+            <span class="duration">Duração: 2-3 horas</span>
+            <span class="cost">Custo: R$350 por pessoa</span>
           </summary>
-          <p>Existe uma linha Salvador x Boipeba. Esse trajeto é feito de lancha por uma agência e o embarque acontece no Terminal da França. <a href="https://cocoloucoturismo.com/" target="_blank">cocoloucoturismo.com</a></p>
+          <br/>
+          <ul>
+            <li>Salvador → Boipeba: Lancha direta partindo de Terminal França.</li>
+          </ul>
+          <p>Recomendamos: <a href="https://cocoloucoturismo.com/" target="_blank">cocoloucoturismo.com</a></p>
+          <br/>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1943.999446702555!2d-38.51505115210884!3d-12.971922312697211!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x71604e16bf5be7f%3A0x3e2d221ac4d94d21!2sTerminal%20Tur%C3%ADstico%20N%C3%A1utico%20da%20Bahia!5e0!3m2!1spt-BR!2sbr!4v1757961400322!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </details>
         <details class="transport-option">
           <summary>
             <div class="icon">🚗</div>
             <h3>Semi-terrestre</h3>
+            <span class="duration">Duração: 4-6 horas</span>
+            <span class="cost">Custo: R$40-60 por pessoa</span>
           </summary>
-          <p>Quem viaja de carro, têm duas opções: viaja pela BR 101 ou atravessa a Baía de Todos os Santos com o Ferry-boat até Bom Despacho. O destino sempre é Valença. No porto saem lanchas e barcos para Boipeba.</p>
-          <p>Uma outra opção é seguir a viagem até Torrinha, um lugar pequeno, que fica mais próximo da Ilha de Boipeba e têm pequenos estacionamentos. Para chegar à Torrinha, pega a estrada BA 001 até a cidade Nilo Peçanha. Após passar a cidade, entra num entroncamento para a cidade de Cairu. Nesta estrada cerca de 12 km depois dobra à direita, numa estrada de cascalho de 7 km, que leva até Torrinha.</p>
           <br/>
-          <p>Mapa da localização de Torrinha:</p>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d75959.77732980775!2d-39.0357600592838!3d-13.566635862194405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1storrinhas%20boipeba!5e0!3m2!1spt-BR!2sbr!4v1757947380591!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <ul>
+            <li>Salvador → Bom Despacho: Ferry Boat saindo de Terminal Marítimo de São Joaquim - R$10 por pessoa.</li>
+            <li>Bom Despacho → Valença: Ônibus saindo de Bom Despacho - R$50 por pessoa.</li>
+            <li>Valença → Boipeba: Lancha rápida partindo da marina de Dendezeiros - disponibilizada gratuitamente.</li>
+          </ul>
+          <br/>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1632.0565313764748!2d-39.057784582572715!3d-13.368518539216726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x73e4409d1e29d1d%3A0xd533aa4e9cb71d7!2sMarina!5e0!3m2!1spt-BR!2sbr!4v1757961450080!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </details>
         <details class="transport-option">
           <summary>
-            <div class="icon">✈️</div>
-            <h3>De Avião</h3>
+            <div class="icon">⛴️</div>
+            <h3>Catamarã</h3>
+            <span class="alternative">Em caso de baixa disponibilidade de lanchas diretas.</span>
+            <span class="duration">Duração: 3-4 horas</span>
+            <span class="cost">Custo: R$300-350 por pessoa</span>
           </summary>
-          <p>Do aeroporto de Salvador partem pequenos aviões para a Ilha de Boipeba. A viagem demora 30 minutos. <a href="https://www.voeabaete.com.br/destino/boipeba/" target="_blank">voeabaete.com.br</a></p>
+          <br/>
+          <ul>
+            <li>Salvador → Morro de São Paulo: Catamarã saindo do Terminal Turístico Náutico da Bahia - R$150 por pessoa.</li>
+            <li>Porto de Morro de São Paulo → Receptivo: Caminhada exaustiva para quem tiver dificuldade de mobilidade (incluindo malas).</li>
+            <li>Receptivo → Boipeba: Via veículo 4x4 (recomendamos organizar com antecedência - Guanabara Tur: +55 75 9 9108 5925 - R$150 por pessoa).</li>
+          </ul>
+          <p>Recomendamos: <a href="https://www.morrodesaopaulocatamara.com/" target="_blank">morrodesaopaulocatamara.com</a></p>
+          <br/>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1943.999446702555!2d-38.51505115210884!3d-12.971922312697211!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x71604e16bf5be7f%3A0x3e2d221ac4d94d21!2sTerminal%20Tur%C3%ADstico%20N%C3%A1utico%20da%20Bahia!5e0!3m2!1spt-BR!2sbr!4v1757961400322!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </details>
       </div>
+      <h3>📍 Boipeba → Fazenda Pontal (no dia do evento)</h3>
+        <p>Uma embarcação estará disponível durante o dia do evento para fazer a travessia do rio partindo de Boipeba para a Fazenda Pontal.
+          <br/><br/>
+          O horário e local de partida serão informados posteriormente.</p>
+
     </section>
 
     <section class="card section" aria-labelledby="ttl-map">
