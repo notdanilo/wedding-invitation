@@ -112,9 +112,16 @@
       right: 10px;
     }
 
+    details > summary {
+      list-style: none;
+      cursor: pointer;
+    }
+    details > summary::-webkit-details-marker {
+      display: none;
+    }
     .transport-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: 1fr;
       gap: 20px;
       margin-top: 20px;
     }
@@ -124,6 +131,11 @@
       border: 1px solid rgba(0,0,0,.06);
       border-radius: 12px;
       background: #fff;
+    }
+    .transport-option summary {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     .transport-option .icon {
       font-size: 32px;
@@ -135,9 +147,13 @@
       font-weight: 500;
     }
     .transport-option p {
-      margin: 0;
-      font-size: 14px;
+      margin: 8px 0 0;
+      font-size: 16px;
       color: var(--muted);
+      line-height: 1.5;
+    }
+    .transport-option p + p {
+      margin-top: 10px;
     }
     .transport-option a {
       color: var(--accent);
@@ -245,27 +261,38 @@
       <h3>Como chegar a Boipeba a partir de Salvador</h3>
       <p>Existe uma linha direta de Salvador para Boipeba. Esse trajeto é feito por lancha através de uma agência e o embarque acontece no Terminal Turístico Náutico da Bahia.</p>
       <div class="transport-grid">
-        <div class="transport-option">
-          <div class="icon">⛴️</div>
-          <h3>De Catamarã</h3>
+        <details class="transport-option">
+          <summary>
+            <div class="icon">⛴️</div>
+            <h3>De Catamarã</h3>
+          </summary>
           <p>No terminal marítimo em frente ao Mercado Modelo partem embarcações para Morro de São Paulo que levam cerca de duas horas. Do Morro pode pegar um jipe até Boipeba. Recomendamos organizar isso com antecedência. <a href="https://www.morrodesaopaulocatamara.com/" target="_blank">morrodesaopaulocatamara.com</a></p>
-        </div>
-        <div class="transport-option">
-          <div class="icon">🚤</div>
-          <h3>Lancha Direta</h3>
+        </details>
+        <details class="transport-option">
+          <summary>
+            <div class="icon">🚤</div>
+            <h3>Lancha Direta</h3>
+          </summary>
           <p>Existe uma linha Salvador x Boipeba. Esse trajeto é feito de lancha por uma agência e o embarque acontece no Terminal da França. <a href="https://cocoloucoturismo.com/" target="_blank">cocoloucoturismo.com</a></p>
-        </div>
-        <div class="transport-option">
-          <div class="icon">🚗</div>
-          <h3>Semi-terrestre</h3>
-          <p>Quem viaja de carro, têm duas opções: viaja pela BR 101 ou atravessa a Baía de Todos os Santos com o Ferry-boat até Bom Despacho. O destino sempre é Valença. No porto saem lanchas e barcos para Boipeba.
-            Uma outra opção é seguir a viagem até Torrinha, um lugar pequeno, que fica mais próximo da Ilha de Boipeba e têm pequenos estacionamentos. Para chegar à Torrinha, pega a estrada BA 001 até a cidade Nilo Peçanha. Após passar a cidade, entra num entroncamento para a cidade de Cairu. Nesta estrada cerca de 12 km depois dobra à direita, numa estrada de cascalho de 7 km, que leva até Torrinha.</p>
-        </div>
-        <div class="transport-option">
-          <div class="icon">✈️</div>
-          <h3>De Avião</h3>
+        </details>
+        <details class="transport-option">
+          <summary>
+            <div class="icon">🚗</div>
+            <h3>Semi-terrestre</h3>
+          </summary>
+          <p>Quem viaja de carro, têm duas opções: viaja pela BR 101 ou atravessa a Baía de Todos os Santos com o Ferry-boat até Bom Despacho. O destino sempre é Valença. No porto saem lanchas e barcos para Boipeba.</p>
+          <p>Uma outra opção é seguir a viagem até Torrinha, um lugar pequeno, que fica mais próximo da Ilha de Boipeba e têm pequenos estacionamentos. Para chegar à Torrinha, pega a estrada BA 001 até a cidade Nilo Peçanha. Após passar a cidade, entra num entroncamento para a cidade de Cairu. Nesta estrada cerca de 12 km depois dobra à direita, numa estrada de cascalho de 7 km, que leva até Torrinha.</p>
+          <br/>
+          <p>Mapa da localização de Torrinha:</p>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d75959.77732980775!2d-39.0357600592838!3d-13.566635862194405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1storrinhas%20boipeba!5e0!3m2!1spt-BR!2sbr!4v1757947380591!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </details>
+        <details class="transport-option">
+          <summary>
+            <div class="icon">✈️</div>
+            <h3>De Avião</h3>
+          </summary>
           <p>Do aeroporto de Salvador partem pequenos aviões para a Ilha de Boipeba. A viagem demora 30 minutos. <a href="https://www.voeabaete.com.br/destino/boipeba/" target="_blank">voeabaete.com.br</a></p>
-        </div>
+        </details>
       </div>
     </section>
 
