@@ -242,6 +242,7 @@
       }
     }
   </style>
+  <script src="qrcode.min.js"></script>
 </head>
 <body>
   <header class="hero">
@@ -415,11 +416,142 @@
       <p>Confirme sua presença até <strong>28 de Dezembro de 2025</strong>.</p>
       <div data-tf-live="01K54GTZG9E0GF3FK0Y0VRED51"></div><script src="https://embed.typeform.com/next/embed.js"></script>
     </section>
+
+    <!-- Loja Section -->
+    <section class="card section" aria-labelledby="ttl-lojinha">
+      <h2 id="ttl-lojinha" style="margin:0 0 14px 0;font-weight:500;display:inline">🎁 Mimos</h2>
+      <div id="lojinha"></div>
+    </section>
   </main>
+
+  <!-- Modal for Item Details -->
+  <div id="modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:100; align-items:center; justify-content:center;">
+    <div style="background:var(--card); padding:24px; border-radius:16px; max-width:400px; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.2);">
+      <h3 id="modal-title" style="margin:0 0 12px"></h3>
+      <div id="modal-img" style="margin:0 auto 16px"></div>
+      <p id="modal-desc" style="margin:0 0 16px; color:var(--muted)"></p>
+      <p id="modal-value" style="margin:0 0 8px; font-weight:bold"></p>
+      <p style="margin:0 0 8px">Pagar com Pix:</p>
+      <div id="qrcode" style="margin:0 auto 16px; display:flex; justify-content:center;"></div>
+      <button onclick="document.getElementById('modal').style.display='none';" style="background:var(--accent); color:white; border:none; padding:10px 20px; border-radius:8px; cursor:pointer;">Fechar</button>
+    </div>
+  </div>
 
   <footer>
     <p>Com carinho, Marina & Danilo • 28/03/2026 — Boipeba, Bahia</p>
   </footer>
+
+  <!-- PIX -->
+  <script type="text/javascript">
+
+  const items = {
+    "Experiências na Lua de Mel": [
+    {
+        "valor": 100,
+        "titulo": "Taxa para Não Postar Story Chato",
+        "descricao": "Por que ninguém aguenta mais ver os mesmos stories chatos.",
+        "imagem": "assets/loja/story.png",
+        "prompt": "A playful and creative illustration, no people. A decorative composition with a smartphone camera, crossed-out sunset spam icons, and a social media mute button. Add a sign with the text in Portuguese: \"Taxa para Não Postar Story Chato\"."
+      },
+      {
+        "valor": 150,
+        "titulo": "Táxi para Fugir do Passeio de Barco Lotado",
+        "descricao": "Porque nada acaba com o romance como um passeio de barco lotado com gente estressada.",
+        "imagem": "assets/loja/taxi.png",
+        "prompt": "A playful and creative illustration, no people. A decorative composition with a bright yellow taxi on a tropical pier, while a crowded cartoonish boat sails away in the distance. Add a sign with the text in Portuguese: \"Táxi para Fugir do Passeio de Barco Lotado\"."
+      },
+      {
+        "valor": 200,
+        "titulo": "Guia de Sobrevivência para Comidas de Rua",
+        "descricao": "Onde Comer Barato sem Passar Mal. Um PDF com os melhores podrões da ilha, porque espumante todo dia não cabe no orçamento.",
+        "imagem": "assets/loja/guia.png",
+        "prompt": "A playful and creative illustration, no people. A decorative composition with a PDF icon, cheap food stalls, tropical snacks, and a map with 'safe spots'. Add a sign with the text in Portuguese: \"Guia de Sobrevivência\"."
+      }
+    ],
+    "Experiências no Cotidiano": [
+    {
+        "valor": 250,
+        "titulo": "Kit 'Copo de Requeijão Edição Limitada'",
+        "descricao": "Porque a vida real se faz de copos de verdade.",
+        "imagem": "assets/loja/requeijao.png",
+        "prompt": "A playful and creative illustration, no people. A decorative composition with iconic Brazilian yogurt glasses used as cups, presented like a luxury limited edition set. Add a sign with the text in Portuguese: \"Kit 'Copo de Requeijão Edição Limitada'\"."
+      },
+      {
+        "valor": 400,
+        "titulo": "Sessão de Fotografia 'Casal em Home Office'",
+        "descricao": "Fotos profissionais de vocês olhando para a mesma tela de Zoom.",
+        "imagem": "assets/loja/office.png",
+        "prompt": "A playful and creative illustration, no people. A decorative composition with two laptops side by side, a camera tripod, and a Zoom interface on screen. Add a sign with the text in Portuguese: \"Sessão de Fotografia 'Casal em Home Office'\"."
+      },
+      {
+        "valor": 600,
+        "titulo": "Um Caminhão de Rolo de Crochê",
+        "descricao": "Para nunca faltar linha quando bater a inspiração.",
+        "imagem": "assets/loja/caminhao.png",
+        "prompt": "Whimsical illustration, no people. A colorful toy-like truck overflowing with giant crochet yarn rolls in many pastel colors. The Portuguese phrase appears printed on a banner tied to the truck: \"Um Caminhão de Rolo de Crochê\"."
+      }
+    ],
+    "Presentes para Demonstrar Afeto em Grandes Quantias": [
+      {
+        "valor": 800,
+        "titulo": "Fundo para a Terapia de Casal",
+        "descricao": "Melhor gastar com psicólogo que com advogado.",
+        "imagem": "assets/loja/terapia.png",
+        "prompt": "A playful and creative illustration, no people. A decorative composition with a piggy bank, a couch, and psychology books. Add a sign with the text in Portuguese: \"Fundo para a Terapia de Casal\"."
+      },
+      {
+        "valor": 1000,
+        "titulo": "Fundo para a Barriga de Chopp",
+        "descricao": "Porque o amor é eterno, mas o metabolismo não.",
+        "imagem": "assets/loja/barriga.png",
+        "prompt": "A playful and creative illustration, no people. A decorative composition with giant beer mugs, a balloon shaped like a belly, and floating hearts. Add a sign with the text in Portuguese: \"Fundo para a Barriga de Chopp\"."
+      }
+    ]
+  };
+
+
+
+  function crc16(str) {
+    let crc = 0xFFFF;
+    for (let i = 0; i < str.length; i++) {
+      crc ^= str.charCodeAt(i) << 8;
+      for (let j = 0; j < 8; j++) {
+        if ((crc & 0x8000) !== 0) {
+          crc = (crc << 1) ^ 0x1021;
+        } else {
+          crc <<= 1;
+        }
+        crc &= 0xFFFF; // mantém 16 bits
+      }
+    }
+    return crc.toString(16).toUpperCase().padStart(4, '0');
+  }
+  function to_length(str) {
+    return (str.length).toString().padStart(2, '0');
+  }
+
+  function pix(element, nome, valor) {
+    nome = nome.replace(/ /g, '');
+    nome = nome.slice(0, 10);
+    nome = nome.normalize('NFD').replace(/[\u0300-\u036f]/g, ''); // remove diacritics
+    var identificador = "05" + to_length(nome) + nome;
+    let qrcode = "000201";
+    qrcode += "26330014BR.GOV.BCB.PIX011102896616500"; // merchant account information
+    qrcode += "52040000"; // merchant category code
+    qrcode += "5303986"; // currency
+    qrcode += "54" + to_length(valor) + valor;
+    qrcode += "5802BR";
+    qrcode += "5901N";
+    qrcode += "6001C";
+    qrcode += "62" + to_length(identificador) + identificador; // identificador
+    qrcode += "6304"; // CRC16
+    verification = crc16(qrcode);
+    qrcode += verification; // CRC16
+    new QRCode(element, qrcode);
+  }
+  
+  // pix(document.getElementById("qrcode"), "COISADECINQUENTA", "51.23");
+  </script>  
 
   <script>
     // ===== Contador Regressivo =====
@@ -503,6 +635,40 @@
       }
       gallery.addEventListener('mouseenter', () => clearInterval(timer));
       gallery.addEventListener('mouseleave', resetTimer);
+    })();
+
+    // New script for lojinha
+    (function() {
+      const lojinha = document.getElementById('lojinha');
+      Object.keys(items).forEach(category => {
+        const catHeader = document.createElement('h3');
+        catHeader.textContent = category;
+        catHeader.style.margin = '16px 0 8px';
+        lojinha.appendChild(catHeader);
+
+        items[category].forEach(item => {
+          const itemDiv = document.createElement('div');
+          itemDiv.style.cursor = 'pointer';
+          itemDiv.style.padding = '12px';
+          itemDiv.style.borderBottom = '1px solid rgba(0,0,0,0.1)';
+          itemDiv.style.display = 'flex';
+          itemDiv.style.alignItems = 'center';
+          let imgHtml = item.imagem ? `<img src="${item.imagem}" alt="${item.titulo}" style="width:50px; height:50px; object-fit:cover; margin-right:10px; border-radius:4px;">` : '';
+          itemDiv.innerHTML = `${imgHtml}<strong>${item.titulo}</strong> - R$${item.valor.toFixed(2)}`;
+          itemDiv.onclick = () => {
+            document.getElementById('modal-title').textContent = item.titulo;
+            const modalImg = document.getElementById('modal-img');
+            modalImg.innerHTML = item.imagem ? `<img src="${item.imagem}" alt="${item.titulo}" style="max-width:100%; border-radius:8px; margin-bottom:12px;">` : '';
+            document.getElementById('modal-desc').textContent = item.descricao;
+            document.getElementById('modal-value').textContent = `Valor: R$${item.valor.toFixed(2)}`;
+            const qrcode = document.getElementById('qrcode');
+            qrcode.innerHTML = '';
+            pix(qrcode, item.titulo, item.valor.toFixed(2));
+            document.getElementById('modal').style.display = 'flex';
+          };
+          lojinha.appendChild(itemDiv);
+        });
+      });
     })();
   </script>
 </body>
