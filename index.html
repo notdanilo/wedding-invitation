@@ -426,7 +426,8 @@
 
   <!-- Modal for Item Details -->
   <div id="modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:100; align-items:center; justify-content:center;">
-    <div style="background:var(--card); padding:24px; border-radius:16px; max-width:400px; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.2);">
+    <div style="background:var(--card); padding:24px; border-radius:16px; max-width:400px; max-height:90vh; overflow-y:auto; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.2); position:relative;">
+      <button onclick="document.getElementById('modal').style.display='none';" style="position:absolute; top:10px; right:10px; border:none; background:none; font-size:24px; cursor:pointer; color:var(--muted);">×</button>
       <h3 id="modal-title" style="margin:0 0 12px"></h3>
       <div id="modal-img" style="margin:0 auto 16px"></div>
       <p id="modal-desc" style="margin:0 0 16px; color:var(--muted)"></p>
